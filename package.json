@@ -1,0 +1,16 @@
+{
+  "name": "test-listening-player",
+  "version": "1.0.0",
+  "description": "An audio player for listening part of test",
+  "main": "index.js",
+  "author": {
+    "name": "chardon",
+    "email": "charlesdong_2000@outlook.com"
+  },
+  "homepage": "https://github.com/chardon55/test-listening-player",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^13.1.1",
+    "electron-builder": "^22.10.5"
+  }
+}

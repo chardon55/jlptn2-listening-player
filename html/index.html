@@ -6,10 +6,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>N２聴解プレーヤー</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="css/bootstrap-utilities.min.css">
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/player.js"></script>
+
+    <script>
+        let version = "Version: "
+
+        fetch('../package.json')
+            .then(res => res.json())
+            .then(data => {
+                version += data.version
+            })
+
+        function printVersion() {
+            const versionField = document.getElementsByClassName('version-field')
+
+            for (item of versionField) {
+                item.innerText = version
+            }
+        }
+
+
+    </script>
 </head>
 
 <body>
+    <header>
+        <div class="badge bg-primary">
+            聴解プレーヤー&nbsp;&nbsp;
+            <span class="version-field"></span>
+        </div>
+    </header>
 
+    <div id="main-frame" class="container"></div>
+
+    <footer></footer>
+
+    <script>
+        printVersion()
+    </script>
 </body>
 
 </html>

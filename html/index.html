@@ -12,46 +12,61 @@
     <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="css/bootstrap-utilities.min.css">
 
-    <script src="js/bootstrap.bundle.min.js"></script>
-
-    <script src="js/player.js"></script>
-
-    <script>
-        let version = "Version: "
-
-        fetch('../package.json')
-            .then(res => res.json())
-            .then(data => {
-                version += data.version
-            })
-
-        function printVersion() {
-            const versionField = document.getElementsByClassName('version-field')
-
-            for (item of versionField) {
-                item.innerText = version
-            }
+    <style>
+        body {
+            background-color: #b536d4;
         }
 
+        .hidden-tag {
+            display: none;
+        }
+    </style>
 
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        let packageInfo
+
+        $.ajax({
+            url: "../package.json",
+            async: false,
+            success: (data, textStatus, jqXHR) => {
+                packageInfo = data
+            }
+        })
+
+        function printVersion() {
+            $(".version-field").html(`&nbsp;&nbsp;Version: ${packageInfo.version}`)
+        }
     </script>
 </head>
 
 <body>
-    <header>
+    <header id="header">
         <div class="badge bg-primary">
-            聴解プレーヤー&nbsp;&nbsp;
+            聴解プレーヤー
             <span class="version-field"></span>
         </div>
     </header>
 
-    <div id="main-frame" class="container"></div>
-
-    <footer></footer>
-
+    <iframe id="main-panel-frame" src="./panel.html"></iframe>
     <script>
         printVersion()
+
+        function resizeFrame() {
+            $("#main-panel-frame").width(window.innerWidth)
+            $("#main-panel-frame").height(window.innerHeight - $("#header").height())
+        }
+
+        resizeFrame()
+
+        window.addEventListener('resize', e => {
+            resizeFrame()
+        })
     </script>
+
+    <footer></footer>
 </body>
 
 </html>

@@ -2,7 +2,7 @@
   "name": "test-listening-player",
   "version": "1.0.0",
   "description": "An audio player for listening part of test",
-  "main": "src/index.js",
+  "main": "src/main.js",
   "author": {
     "name": "chardon",
     "email": "charlesdong_2000@outlook.com"

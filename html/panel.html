@@ -124,7 +124,7 @@
 
                         for (let section of books[bookIdx].sections) {
                             listGroup.append(`
-<a class="list-group-item${isFirst ? " active\" aria-current=\"true" : ""}"
+<a class="list-group-item"
    id="list-item-${bookIdx}-${sectionIdx}"
    href="javascript:changeActiveItem('#list-item-${bookIdx}-${sectionIdx}', '#menu-item-list-group-${bookIdx}');refreshMainPanel(${bookIdx}, ${sectionIdx});">
     ${section.name}<br />${section.description}
@@ -154,7 +154,7 @@
         <div class="card card-body col" id="main-panel">
             <div class="card">
                 <div class="card-body">
-                    <h1 class="h1 text-center">Welcome!</h1>
+                    <h1 class="h1 text-center">聴解プレーヤーへようこそ！</h1>
                 </div>
             </div>
         </div>

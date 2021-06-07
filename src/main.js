@@ -8,11 +8,6 @@ function createWindow() {
 
     win.maximize()
     win.loadFile(`./html/index.html`)
-    win.webContents.openDevTools()
-
-    win.webContents.on('did-finish-load', () => {
-        win.webContents.send('version', fs.readFileSync("./package.json"))
-    })
 }
 
 app.whenReady().then(() => {

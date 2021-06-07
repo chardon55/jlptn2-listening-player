@@ -159,11 +159,19 @@
             </div>
         </div>
         <script>
-            $("#main-menu").css({
-                height: `${window.innerHeight}px`
-            })
-            $("#main-panel").css({
-                height: `${window.innerHeight}px`
+            function resizeComponents() {
+                $("#main-menu").css({
+                    height: `${window.innerHeight}`
+                })
+                $("#main-panel").css({
+                    height: `${window.innerHeight}`
+                })
+            }
+
+            resizeComponents()
+
+            window.addEventListener('resize', e => {
+                resizeComponents()
             })
         </script>
     </div>

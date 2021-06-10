@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "electron .",
-    "distWin": "electron-builder -w --x64",
+    "distWin": "electron-builder -w nsis --x64",
     "distLnxDeb": "electron-builder -l deb --x64",
     "distLnxRpm": "electron-builder -l rpm --x64"
   }

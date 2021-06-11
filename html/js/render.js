@@ -75,11 +75,11 @@ function loadUI(assignedMainPanel) {
             for (let bookIdx in books) {
                 menu.append(`
 <div class="accordion-item" id="menu-item-book-${bookIdx}">
-    <h2 class="accordion-header" id="menu-item-heading-${bookIdx}">
+    <div class="accordion-header" id="menu-item-heading-${bookIdx}">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         ${books[bookIdx].name}
       </button>
-    </h2>
+    </div>
     <div id="menu-item-collapse-${bookIdx}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <i class="hidden-tag" id="menu-item-color-tag-${bookIdx}">${books[bookIdx].color}</i>

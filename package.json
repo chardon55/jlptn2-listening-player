@@ -1,6 +1,6 @@
 {
   "name": "test-listening-player",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An audio player for listening part of test",
   "main": "src/main.js",
   "author": {

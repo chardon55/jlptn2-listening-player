@@ -43,8 +43,8 @@
 </head>
 
 <body>
-    <header id="header">
-        <div class="badge bg-primary">
+    <header>
+        <div class="badge bg-primary" style="float: left;">
             聴解プレーヤー
             <span class="version-field"></span>
         </div>
@@ -55,8 +55,11 @@
         printVersion()
 
         function resizeFrame() {
-            $("#main-panel-frame").width(window.innerWidth)
-            $("#main-panel-frame").height(window.innerHeight - $("#header").height())
+            const frame = $("#main-panel-frame")
+            // const frameDOM = document.getElementById("main-panel-frame")
+
+            frame.width(window.innerWidth)
+            frame.height(window.innerHeight - frame.offset().top - 10)
         }
 
         resizeFrame()

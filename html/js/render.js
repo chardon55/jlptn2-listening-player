@@ -1,3 +1,17 @@
+// let packageInfo
+
+// $.ajax({
+//     url: "../package.json",
+//     async: false,
+//     success: (data, textStatus, jqXHR) => {
+//         packageInfo = data
+//     }
+// })
+
+// function printVersion() {
+//     $(".version-field").html(`&nbsp;&nbsp;Version: ${packageInfo.version}`)
+// }
+
 let meta = null
 let player = null
 
@@ -18,28 +32,40 @@ function refreshMainPanel(bookIdx, sectionIdx) {
     })
 
     mainPanel.append(`
-<h1 class="h1 text-center">${currentBook.name}</h1>
-<h2 class="h2 text-center">${currentSection.name}&nbsp;&nbsp;${currentSection.description}</h2>
+<div class="card">
+    <div class="card-body">
+        <h1 class="text-center fs-2">${currentBook.name}</h1>
+        <h2 class="text-center fs-3">${currentSection.name}&nbsp;&nbsp;${currentSection.description}</h2>
+    </div>
+</div>
 <div class="file-control-group" id="file-control-group" style="overflow-y: scroll;">
 </div>
             `)
 
-    const controlGroup = $("#file-control-group")
+    // const controlGroup = $("#file-control-group")
+    const controlGroupDOM = document.getElementById('file-control-group')
+
+    controlGroupDOM.innerHTML += "<div class=\"card card-body\"></div>"
+
+    let offset = 0
 
     let audioIdx = 0
 
     for (let file of files) {
         if (file == "---") {
-            controlGroup.append("<hr>")
+            controlGroupDOM.innerHTML += "<div class=\"card card-body\"></div>"
+            offset++
             continue
         }
 
-        controlGroup.append(`
-<div class="py-3 container">
-    <div>Audio&nbsp;${audioIdx + 1}</div>
-    <audio controls src="../audio/${currentBook.dir}/${file}" id="audio-control-${audioIdx}"></audio>
+        controlGroupDOM.children[offset].innerHTML += `
+<div class="py-3">
+    <div class="badge bg-success">Audio&nbsp;${audioIdx + 1}</div>
+    <div>
+        <audio controls src="../audio/${currentBook.dir}/${file}" id="audio-control-${audioIdx}"></audio>
+    </div>
 </div>
-                `)
+                `
 
         audioIdx++
     }
@@ -81,9 +107,9 @@ function loadUI(assignedMainPanel) {
       </button>
     </div>
     <div id="menu-item-collapse-${bookIdx}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
+      <div class="accordion-body p-0">
         <i class="hidden-tag" id="menu-item-color-tag-${bookIdx}">${books[bookIdx].color}</i>
-        <div class="list-group" id="menu-item-list-group-${bookIdx}"></div>
+        <div class="" id="menu-item-list-group-${bookIdx}"></div>
       </div>
     </div>
 </div>

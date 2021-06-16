@@ -43,17 +43,15 @@
 </head>
 
 <body>
-    <header>
-        <div class="badge bg-primary" style="float: left;">
+    <header class="m-1">
+        <!-- <div class="badge bg-primary" style="float: left;">
             聴解プレーヤー
             <span class="version-field"></span>
-        </div>
+        </div> -->
     </header>
 
     <iframe id="main-panel-frame" src="./panel.html"></iframe>
     <script>
-        printVersion()
-
         function resizeFrame() {
             const frame = $("#main-panel-frame")
             // const frameDOM = document.getElementById("main-panel-frame")

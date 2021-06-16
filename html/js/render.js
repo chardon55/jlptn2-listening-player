@@ -45,20 +45,36 @@ function refreshMainPanel(bookIdx, sectionIdx) {
     // const controlGroup = $("#file-control-group")
     const controlGroupDOM = document.getElementById('file-control-group')
 
-    controlGroupDOM.innerHTML += "<div class=\"card card-body\"></div>"
-
     let offset = 0
+
+    const innerCardOutline = `<div class="card card-body">
+    <div class="card card-body mx-auto bg-warning" style="display: inline-block;">
+        <div class="form-check form-switch" style="display: inline-block;">
+            <input class="form-check-input" type="checkbox" id="autonext-{{0}}" checked>
+            <label class="form-check-label" for="autonext-{{0}}">Auto play next audio</label>
+        </div>
+        <div style="display: inline-block; width: 3rem;"></div>
+        <a class="btn btn-primary" href="#" style="display: inline-block;">Play</a>
+    </div>
+    <div class="container"></div>
+</div>`
+
+    controlGroupDOM.innerHTML +=
+        innerCardOutline
+            .replaceAll("{{0}}", offset.toString())
 
     let audioIdx = 0
 
     for (let file of files) {
         if (file == "---") {
-            controlGroupDOM.innerHTML += "<div class=\"card card-body\"></div>"
+            controlGroupDOM.innerHTML +=
+                innerCardOutline
+                    .replaceAll("{{0}}", offset.toString())
             offset++
             continue
         }
 
-        controlGroupDOM.children[offset].innerHTML += `
+        controlGroupDOM.children[offset].children[1].innerHTML += `
 <div class="py-3">
     <div class="badge bg-success">Audio&nbsp;${audioIdx + 1}</div>
     <div>

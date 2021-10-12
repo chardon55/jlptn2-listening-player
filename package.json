@@ -10,7 +10,7 @@
   "homepage": "https://github.com/chardon55/test-listening-player",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^13.1.1",
+    "electron": "^13.3.0",
     "electron-builder": "^22.10.5"
   },
   "scripts": {
